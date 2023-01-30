@@ -228,7 +228,7 @@ input[type="radio" i] {
     cursor: default;
     appearance: auto;
     box-sizing: border-box;
-    width: 20px;
+    width: 10px;
     padding: initial;
     border: initial;
     margin-right: 10px;
