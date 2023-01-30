@@ -131,7 +131,34 @@ input {
     font-size: 15px;
     font-weight: 400;
     padding: 10px 0px;
-    border: 0 solid black
+    border: 0 solid black;
+}
+
+textarea {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 10px 0px;
+    border: 0 solid black;
+    font-family: 'Pretendard', sans-serif !important;
+    font-size: 15px;
+    font-weight: 400;
+    color: black;
+    line-height: 1.5;
+}
+
+.long {
+    height: 200px;
+    display: unset;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+textarea::placeholder {
+    color: #ccd5e1;
+    font-family: 'Pretendard', sans-serif !important;
 }
 
 input:focus {
@@ -185,6 +212,27 @@ img {
     margin-left: 3px;
 }
 
+.form-radio {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-radio-item {
+    display: flex;
+    flex-direction: row;
+}
+
+input[type="radio" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    width: 20px;
+    padding: initial;
+    border: initial;
+    margin-right: 10px;
+}
 
 
 @media (max-width: 800px) {

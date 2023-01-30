@@ -15,56 +15,81 @@
     <div class="main">
         <div class="container">
             <div class="title">
-                <h1>선민승 멘토님 마루커넥트 신청 사전 설문</h1>
+                <h1><span id="mentor-name">XXX</span> 멘토님의 멘토링</h1>
+                <h1>마루커넥트 신청 사전 설문</h1>
                 <h2>마루커넥트 X 센드타임</h2>
             </div>
             <div class="form">
-                <div class="name form-item">
+                <div class="form-item">
                     <div class="form-title">
-                        <h3>이름<span class="star">*</span></h3>
+                        <h3>회사명<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input type="text" placeholder="이름을 입력하세요.">
+                        <input id="company" type="text" placeholder="회사명을 적어주세요.">
                     </div>
                 </div>
-                <div class="email form-item">
+                <div class="form-item">
+                    <div class="form-title">
+                        <h3>대표님 성함<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-input">
+                        <input id="name" type="text" placeholder="대표님 성함을 적어주세요.">
+                    </div>
+                </div>
+                <div class="form-item">
                     <div class="form-title">
                         <h3>이메일<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input type="text" placeholder="이메일을 입력하세요.">
+                        <input id="email" type="text" placeholder="안내 메일을 받으실 수 있는 이메일 주소를 적어주세요.">
                     </div>
                 </div>
-                <div class="company form-item">
+                <div class="form-item">
                     <div class="form-title">
-                        <h3>기업명<span class="star">*</span></h3>
+                        <h3>연락처<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input type="text" placeholder="기업명을 입력하세요.">
+                        <input id="phone" type="text" placeholder="휴대폰 번호를 적어주세요">
                     </div>
                 </div>
-                <div class="company form-item">
+                <div class="form-item">
                     <div class="form-title">
-                        <h3>먹고 싶은 메뉴</h3>
+                        <h3>목적<span class="star">*</span></h3>
                     </div>
-                    <div class="form-input">
-                        <input type="text" placeholder="먹고 싶은 메뉴를 입력하세요.">
+                    <div class="form-radio">
+                        <div class="form-radio-item">
+                            <label><input id="purpose" type="radio" name="purpose" value="business" onclick="getRadioItem(event)" checked="checked"><span>사업적 고민 상담</span></label>
+                        </div>
+                        <div class="form-radio-item">
+                            <label><input id="purpose" type="radio" name="purpose" value="fund" onclick="getRadioItem(event)"><span>투자 상담</span></label>
+                        </div>
+                        <div class="form-radio-item">
+                            <label><input id="purpose" type="radio" name="purpose" value="networking" onclick="getRadioItem(event)"><span>네트워킹</span></label>
+                        </div>
                     </div>
                 </div>
-                <div class="company form-item">
+                <div class="form-item"  id="docu-item">
                     <div class="form-title">
-                        <h3>원하는 퇴근 시간</h3>
+                        <h3>회사 소개 자료<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input type="text" placeholder="원하는 퇴근 시간을 입력하세요.">
+                        <input id="docu" type="text" placeholder="회사 소개 자료 다운로드 링크를 적어주세요.">
                     </div>
                 </div>
-                <div class="company form-item">
+                <div class="form-item" id="business-theme-item">
                     <div class="form-title">
-                        <h3>오늘 마신 커피</h3>
+                        <h3>희망 주제<span class="star">*</span></h3>
+                    </div>
+                    <div class="form-input long">
+                        <textarea id="business-theme" class="long" placeholder="비즈니스 주제를 적어주세요."></textarea>
+                    </div>
+                </div>
+                <div class="form-item" id="networking-theme-item">
+                    <div class="form-title">
+                        <h3>희망 주제<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input type="text" placeholder="오늘 마신 커피를 입력하세요.">
+                        <textarea id="networing-theme" class="long" placeholder="네트워킹 주제를 적어주세요."></textarea>
                     </div>
                 </div>
                 <div class="submit">
