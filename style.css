@@ -234,6 +234,12 @@ input[type="radio" i] {
     margin-right: 10px;
 }
 
+.info {
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: rgb(155, 155, 155);
+}
+
 
 @media (max-width: 800px) {
     .main  {
