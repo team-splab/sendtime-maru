@@ -55,7 +55,7 @@ function submit() {
 
     $.ajax({
         type: "POST",
-        url: "https://hooks.slack.com/services/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",
+        url: "https://hooks.slack.com/services/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",
         data: JSON.stringify({
             attachments: [
                 {
