@@ -1,4 +1,4 @@
-function submit() {
+function inputCheck() {
     inputCompany = document.getElementById("company").value;
     inputName = document.getElementById("name").value;
     inputEmail = document.getElementById("email").value;
@@ -28,7 +28,10 @@ function submit() {
     }
 }
 
-function redirecting() {
+function submit() {
+    document.getElementsByClassName("loadingPopup")[0].style.display = "block";
+    date = new Date();
+
     inputCompany = document.getElementById("company").value;
     inputName = document.getElementById("name").value;
     inputEmail = document.getElementById("email").value;
@@ -36,6 +39,7 @@ function redirecting() {
     inputDocu = document.getElementById("docu").value;
     inputBusinessTheme = document.getElementById("business-theme").value;
     inputNetworkingTheme = document.getElementById("networking-theme").value;
+    inputTime = date.toLocaleString("ko-kr");
 
     console.log(reservationPageURL);
     console.log(inputCompany);
@@ -47,20 +51,71 @@ function redirecting() {
     console.log(inputBusinessTheme);
     console.log(inputNetworkingTheme);
     console.log(inputPrivate);
+    console.log(inputTime);
 
-    document.getElementsByClassName("loadingPopup")[0].style.display = "block";
-    window.location.href = reservationPageURL;
+    $.ajax({
+        type: "POST",
+        url: "https://hooks.slack.com/services/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",
+        data: JSON.stringify({
+            attachments: [
+                {
+                    color: "#6056db",
+                    pretext: "새로운 마루커넥트가 신청되었습니다.",
+                    title: reservationPageName + " 멘토님",
+                    text:
+                        "회사명 : " +
+                        inputCompany +
+                        "\n대표님 성함 : " +
+                        inputName +
+                        "\n이메일 : " +
+                        inputEmail +
+                        "\n연락처 : " +
+                        inputPhone +
+                        "\n목적 : " +
+                        inputPurpose +
+                        "\n회사 소개 자료 : " +
+                        inputDocu +
+                        "\n희망 주제(비즈니스) : " +
+                        inputBusinessTheme +
+                        "\n희망 주제(네트워킹) : " +
+                        inputNetworkingTheme +
+                        "\n개인정보 동의 : " +
+                        inputPrivate +
+                        "\n신청한 시간 : " +
+                        inputTime,
+                },
+            ],
+        }),
+        dataType: "json",
+        success: function (response) {
+            console.log("전송완료");
+            console.log(response);
+        },
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "https://script.google.com/macros/s/AKfycbzYpkUBYNZkA0Noo05ggHsmNQf5rTtHAz5046oMIBbsiYhlRdDn6smqYCt3DzGEcQLiYQ/exec",
+        data: {
+            신청_시간: inputTime,
+            신청_멘토: reservationPageName,
+            회사명: inputCompany,
+            대표님_성함: inputName,
+            이메일: inputEmail,
+            연락처: String(inputPhone),
+            목적: inputPurpose,
+            회사_소개_자료: inputDocu,
+            희망_주제_비즈니스: inputBusinessTheme,
+            희망_주제_네트워킹: inputNetworkingTheme,
+            개인정보_동의: inputPrivate,
+        },
+        success: function (response) {
+            console.log("전송완료");
+            console.log(response);
+            window.location.href = reservationPageURL;
+        },
+    });
 }
-
-let inputPurpose = "business";
-let inputPrivate = "yse";
-let inputCompany;
-let inputName;
-let inputEmail;
-let inputPhone;
-let inputDocu;
-let inputBusinessTheme;
-let inputNetworkingTheme;
 
 function getRadioItem(event) {
     purpose = event.target.value;
@@ -83,21 +138,46 @@ function getPrivateItem(event) {
     inputPrivate = private;
 }
 
+let inputCompany;
+let inputName;
+let inputEmail;
+let inputPhone;
+let inputPurpose = "business";
+let inputDocu;
+let inputBusinessTheme;
+let inputNetworkingTheme;
+let inputPrivate = "yes";
+let inputTime;
+
 const submitButton = document.getElementById("submit-button-abled");
-submitButton.addEventListener("click", redirecting);
+submitButton.addEventListener("click", submit);
+
+let urlSearch = new URLSearchParams(location.search);
+let reservationPageID = urlSearch.get("id");
+let reservationPageName = urlSearch.get("name");
+
+console.log(reservationPageName);
+
+document.getElementById("mentor-name").innerHTML = reservationPageName;
 
 document.getElementById("networking-theme-item").style.display = "none";
 document.getElementById("docu-item").style.display = "";
 document.getElementById("business-theme-item").style.display = "";
-
-urlSearch = new URLSearchParams(location.search);
-reservationPageID = urlSearch.get("id");
-reservationPageName = urlSearch.get("name");
-console.log(reservationPageName);
-document.getElementById("mentor-name").innerHTML = reservationPageName;
 
 document.getElementById("submit-disabled").style.display = "";
 document.getElementById("submit-abled").style.display = "none";
 
 reservationPageURL =
     "https://www.sendtime.io/reservation?i=" + reservationPageID;
+
+console.log(reservationPageURL);
+console.log(inputCompany);
+console.log(inputName);
+console.log(inputEmail);
+console.log(inputPhone);
+console.log(inputPurpose);
+console.log(inputDocu);
+console.log(inputBusinessTheme);
+console.log(inputNetworkingTheme);
+console.log(inputPrivate);
+console.log(inputTime);
