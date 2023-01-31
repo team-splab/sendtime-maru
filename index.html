@@ -25,7 +25,7 @@
                         <h3>회사명<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input id="company" type="text" placeholder="회사명을 적어주세요.">
+                        <input id="company" type="text" onkeypress="submit()" placeholder="회사명을 적어주세요.">
                     </div>
                 </div>
                 <div class="form-item">
@@ -33,7 +33,7 @@
                         <h3>대표님 성함<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input id="name" type="text" placeholder="대표님 성함을 적어주세요.">
+                        <input id="name" type="text" onkeypress="submit()" placeholder="대표님 성함을 적어주세요.">
                     </div>
                 </div>
                 <div class="form-item">
@@ -41,7 +41,7 @@
                         <h3>이메일<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input id="email" type="email" placeholder="안내 메일을 받으실 수 있는 이메일 주소를 적어주세요.">
+                        <input id="email" type="email" onkeypress="submit()" placeholder="안내 메일을 받으실 수 있는 이메일 주소를 적어주세요.">
                     </div>
                 </div>
                 <div class="form-item">
@@ -49,7 +49,7 @@
                         <h3>연락처<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input id="phone" type="number" placeholder="휴대폰 번호를 적어주세요">
+                        <input id="phone" type="number" onkeypress="submit()" placeholder="휴대폰 번호를 적어주세요">
                     </div>
                 </div>
                 <div class="form-item">
@@ -73,7 +73,7 @@
                         <h3>회사 소개 자료<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <input id="docu" type="url" placeholder="회사 소개 자료 다운로드 링크를 적어주세요.">
+                        <input id="docu" type="url" onkeypress="submit()" placeholder="회사 소개 자료 다운로드 링크를 적어주세요.">
                     </div>
                 </div>
                 <div class="form-item" id="business-theme-item">
@@ -81,7 +81,7 @@
                         <h3>희망 주제<span class="star">*</span></h3>
                     </div>
                     <div class="form-input long">
-                        <textarea id="business-theme" class="long" placeholder="현재 회사에서 겪고 있는 고민은 무엇인가요?&#13;&#10;나누고 싶은 안건을 구체적으로 작성해 주세요.💚&#13;&#10;&#13;&#10;ex. &#13;&#10;1. 채용 공고 작성&#13;&#10;2. 25명 미만 조직에서 챙겨야 할 인사 업무&#13;&#10;3. 조직 문화 만들기"></textarea>
+                        <textarea id="business-theme" class="long" onkeypress="submit()" placeholder="현재 회사에서 겪고 있는 고민은 무엇인가요?&#13;&#10;나누고 싶은 안건을 구체적으로 작성해 주세요.💚&#13;&#10;&#13;&#10;ex. &#13;&#10;1. 채용 공고 작성&#13;&#10;2. 25명 미만 조직에서 챙겨야 할 인사 업무&#13;&#10;3. 조직 문화 만들기"></textarea>
                     </div>
                 </div>
                 <div class="form-item" id="networking-theme-item">
@@ -89,7 +89,7 @@
                         <h3>희망 주제<span class="star">*</span></h3>
                     </div>
                     <div class="form-input">
-                        <textarea id="networing-theme" class="long" placeholder="멘토님께 어떤 분의 소개를 부탁하고 싶으신가요? &#13;&#10;혹은 소개 받고 싶은 이유는 무엇인가요? &#13;&#10;멘토님께 사전에 전달하고 싶은 내용은 무엇인가요?"></textarea>
+                        <textarea id="networking-theme" class="long" onkeypress="submit()" placeholder="멘토님께 어떤 분의 소개를 부탁하고 싶으신가요? &#13;&#10;혹은 소개 받고 싶은 이유는 무엇인가요? &#13;&#10;멘토님께 사전에 전달하고 싶은 내용은 무엇인가요?"></textarea>
                     </div>
                 </div>
                 <div class="form-item">
@@ -113,22 +113,28 @@
                     </div>
                     <div class="form-radio">
                         <div class="form-radio-item">
-                            <label><input id="private" type="radio" name="yes" value="yes" checked="checked" onclick="getRadioItem(event)"
+                            <label><input id="private" type="radio" name="yes" value="yes" checked="checked" onclick="getPrivateItem(event)"
                                     checked="checked"><span>네</span></label>
                         </div>
                         <div class="form-radio-item">
-                            <label><input id="private" type="radio" name="yes" value="no" onclick="getRadioItem(event)"><span>아니오</span></label>
+                            <label><input id="private" type="radio" name="yes" value="no" onclick="getPrivateItem(event)"><span>아니오</span></label>
                         </div>
                     </div>
                 </div>
-                <div class="submit">
-                    <button id="submit-button" type="button">제출하기</button>
+                <div class="submit" id="submit-disabled">
+                    <button id="submit-button" class="disabled" type="button">제출하기</button>
+                </div>
+                <div class="submit" id="submit-abled">
+                    <button id="submit-button-abled" class="abled" type="button">제출하기</button>
                 </div>
             </div>
         </div>
         <div class="footer">
             <img src="/splab-logo.png" alt="">
         </div>
+    </div>
+    <div class="loadingPopup">
+        <div class="spinner"></div>
     </div>
     <script src="script.js"></script>
 </body>
