@@ -55,7 +55,7 @@ function submit() {
 
     $.ajax({
         type: "POST",
-        url: "https://hooks.slack.com/services/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",
+        url: "https://hooks.slack.com/services/" + a + "/" + b + "/" + c,
         data: JSON.stringify({
             attachments: [
                 {
@@ -148,6 +148,9 @@ let inputBusinessTheme;
 let inputNetworkingTheme;
 let inputPrivate = "yes";
 let inputTime;
+let a = "T02FY8DGNBS";
+let b = "B04MNGVHAP3";
+let c = "9Rv9YDi0W9qOAMk6F9KRPi6m";
 
 const submitButton = document.getElementById("submit-button-abled");
 submitButton.addEventListener("click", submit);
