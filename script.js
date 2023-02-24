@@ -95,7 +95,7 @@ function submit() {
 
     $.ajax({
         type: "GET",
-        url: "https://script.google.com/macros/s/AKfycbzYpkUBYNZkA0Noo05ggHsmNQf5rTtHAz5046oMIBbsiYhlRdDn6smqYCt3DzGEcQLiYQ/exec",
+        url: "https://script.google.com/macros/s/AKfycbyq8FvIn-c1H-XmPiL5c3gKGSkSz2JLD6Ypp9tLmp1WiNHLU4g_YdxjEIiweqPnAxsMmg/exec",
         data: {
             신청_시간: inputTime,
             신청_멘토: reservationPageName,
